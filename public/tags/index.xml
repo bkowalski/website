@@ -5,7 +5,7 @@
     <link>/tags/</link>
     <description>Recent content in Tags on F1 w liczbach</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,16 +13,25 @@
     <item>
       <title>Analiza</title>
       <link>/tags/analiza/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/analiza/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Ausgp</title>
+      <link>/tags/ausgp/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ausgp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>F1</title>
       <link>/tags/f1/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/f1/</guid>
       <description></description>
@@ -31,7 +40,7 @@
     <item>
       <title>Formuła 1</title>
       <link>/tags/formu%C5%82a-1/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/formu%C5%82a-1/</guid>
       <description></description>
@@ -40,7 +49,7 @@
     <item>
       <title>George Russell</title>
       <link>/tags/george-russell/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/george-russell/</guid>
       <description></description>
@@ -49,16 +58,34 @@
     <item>
       <title>Kubica</title>
       <link>/tags/kubica/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/kubica/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Kwalifikacje</title>
+      <link>/tags/kwalifikacje/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/kwalifikacje/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rk88</title>
+      <link>/tags/rk88/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rk88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Robert Kubica</title>
       <link>/tags/robert-kubica/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/robert-kubica/</guid>
       <description></description>
@@ -67,7 +94,7 @@
     <item>
       <title>Rstats</title>
       <link>/tags/rstats/</link>
-      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/rstats/</guid>
       <description></description>

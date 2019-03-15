@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on F1 w liczbach</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on F1 w liczbach</description>
+    <title>Kwalifikacje on F1 w liczbach</title>
+    <link>/tags/kwalifikacje/</link>
+    <description>Recent content in Kwalifikacje on F1 w liczbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/kwalifikacje/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
