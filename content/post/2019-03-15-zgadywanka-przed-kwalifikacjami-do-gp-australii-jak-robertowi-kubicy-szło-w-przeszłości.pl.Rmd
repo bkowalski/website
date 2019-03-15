@@ -1,11 +1,10 @@
 ---
-bigimg:
- - desc: Fot. Williams Racing
-   src: /img/Russell_Kubica.jpg
-#date: 2019-03-15
-subtitle: Jak Robertowi Kubicy szło w przeszłości
-#categories: []
-#slug: zgadywanka-przed-kwalifikacjami-do-gp-australii-jak-robertowi-kubicy-szło-w-przeszłości
+# bigimg:
+#  - desc: "Fot. Williams Racing"
+#    src: "/img/Russell_Kubica.jpg""
+date: '2019-03-15'
+categories: []
+slug: zgadywanka-przed-kwalifikacjami-do-gp-australii-jak-robertowi-kubicy-szło-w-przeszłości
 tags:
 - Kubica
 - F1
@@ -17,7 +16,10 @@ tags:
 - RK88
 - Formuła 1
 - kwalifikacje
-title: Zgadywanka przed kwalifikacjami do AusGP
+title: Zgadywanka przed kwalifikacjami do AusGP. Jak Robertowi Kubicy szło w przeszłości
+type: ''
+subtitle: ''
+#image: '/img/Russell_Kubica.jpg'
 ---
 
 ## Gdzie Williams jako zespół ukończy kwalifikiacje do AusGP 2019 wszyscy raczej się spodziewają...
