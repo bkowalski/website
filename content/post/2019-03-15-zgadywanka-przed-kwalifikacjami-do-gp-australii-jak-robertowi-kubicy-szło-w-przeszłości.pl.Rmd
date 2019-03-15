@@ -1,0 +1,91 @@
+---
+title: 'Zgadywanka przed kwalifikacjami do GP Australii:'
+author: "f1wliczbach"
+date: '2019-03-15'
+categories: []
+slug: zgadywanka-przed-kwalifikacjami-do-gp-australii-jak-robertowi-kubicy-szło-w-przeszłości
+subtitle: Jak Robertowi Kubicy szło w przeszłości
+tags:
+- Kubica
+- F1
+- analiza
+- rstats
+- AusGP
+- George Russell
+- Robert Kubica
+- RK88
+- Formuła 1
+- kwalifikacje
+bigimg:
+- desc: Fot. Williams Racing
+  src: /img/Russell_Kubica.jpg
+type: ''
+---
+
+## Gdzie Williams jako zespół ukończy kwalifikiacje do AusGP 2019 wszyscy raczej się spodziewają...
+
+Po testach w Barcelonie oraz dwóch pierwszych treningach w Melbourne istnieje olbrzymia pokusa, by stwierdzić, że pozycja Williamsa jest znana. Wypowiedzi zarówno Roberta, jak i George'a sugerują, że 3.853 George'a i 4.055 Roberta do najszybszego Lewisa i prawie 2 sekundy straty do najwolniejszego z reszty w FP2 Lando Norrisa w McLarenie mogą pokazywać większą przepaść między Williamsem a ogonem środka stawki niż faktyczna[^1]. Jednak nie ulega wątpliwości, że większość komentatorów za najbardziej prawdopodbne miejsca kierowców ROKiT Williams Racing obstawiłaby ostatnie i przedostatnie. Wyłączając zdarzenia losowe, które w F1 nie są aż tak rzadkie, a szczególnie na początku sezonu, przy tak licznych debiutantach w stawce, trudno zaprzeczyć, że takie typowanie ma oparcie w danych.
+
+## Ale jak Robert może wypaść na tle George'a?
+
+Pozostaje zatem poszukać jakiegoś punktu zaczepienia w historycznych danych co do tego jak może wypaść Robert na tle George'a. Wiemy, że chłopaki są tego formatu kierowcami, że nie interesuje ich ściganie się o przedostatnie miejsce. Obaj będą jak mogą przede wszystkim pracowali nad tym, żeby wesprzeć cały zespół w doganianiu środka stawki skupiając się na współpracy, a nie rywalizacji w tej fazie sezonu. Jednak finalnie obaj nie zajmą tej samej pozycji, a media zasięgowe po tym jak już zaleją Polaków o szokująco niskiej pozycji Williamsa po kwalifikacjach, zaraportują również wynik "rywalizacji wewnątrzzespołowej" i wynik pójdzie w świat.  
+
+Kuszące wydawałoby się przyjrzenie się tu wynikom rywalizacji wewnątrzzespołowej z 2010 roku, kiedy format kwalifikacji był zbliżony do dzisiejszego. Natomiast tutaj sprawa jest prosta, ponieważ Robert pokonał swojego kolegę z Renault Witalija Pietrowa w Q1 o 0.883 sekundy. To był jeden z nielicznych sezonów, gdy GP Australii nie otwierało sezonu, będąc drugą rundą, a jednocześnie był to drugi start Pietrowa w kwalifikacjach do wyścigu F1, więc spuśćmy zasłonę milczenia nad tym jak odpadł w Q1, podczas gdy Robert zakończył kwalifikacje w Q3 na pozycji 9, nie wspominając już o tym, co Robert zrobił potem w wyścigu po tym jak przez 3 sezony mimo wspaniałej jazdy w Australii dopadał go pech.  
+
+Za wcześnie by mówić o tym przed debiutem Russella w F1, ale są przesłanki dające nadzieję, że będzie on partnerem kalibru co najmniej Heidfelda, zdecydowanie bardziej niż Pietrowa. Ponieważ w sezonach 2007-2009, w których Kubica i Quick Nick startowali razem w BMW Sauber w Q3 tankowano bolidu taką ilością paliwa, z jaką startowały do wyścigu[^2], najprostszym rozwiązaniem wydaje się przyjrzenie się wynikom Q2.
+
+```{r, echo = F, warning=F, message=F, error=F} 
+library(ergastR)
+library(dplyr)
+library(tibble)
+library(ggplot2)
+library(magrittr)
+
+quali.aus.df <- bind_rows(
+    qualiResults.df(2007, 1),
+    qualiResults.df(2008, 1),
+    qualiResults.df(2009, 1),
+    qualiResults.df(2010, 2)
+)
+quali.aus.df %>%
+    filter(driverId %in% c('kubica', 'heidfeld'),
+           season < 2010) %>%
+    ggplot(aes(x = code, y = Q2_time, group = 1)) +
+    geom_line(size = 2, col = '#020458') +
+    geom_point(size = 4, col = '#020458') +
+    geom_text(aes(label = Q2), hjust = -.15) +
+    facet_grid(. ~ season)
+```
+
+Widać, że Robert w swoim pierwszym starcie w Australii w 2007 roku wypadł w kwalifikacjach słabiej niż Nick Heidfeld[^3]. Przy okazji warto zwrócić uwagę na uzyskiwane wówczas czasy około 1.25 w pustym bolidzie, gdzie w tym sezonie mimo nieco słabszych czasów Williamsa, czołówka (Lewis) w dwóch sesjach treningowych uzyskiwała czasy 1:22-1:23, a jest bardzo prawdopodobne, że ani Mercedes, ani, przede wszystkim, Ferrari nie było blisko optimum. Jednak w kolejnych startach w kwalifikacjach (Q2) w Australii był już przed kolegą z BMW Sauber, nie wspominając o olbrzymiej przewadze nad Pietrowem w Renault w 2010 roku w debiutanckim sezonie Rosjanina. W sezonie 2009 Robert jeszcze bardziej zwiększył przewagę w Q2 w stosunku do sezonu 2008.
+
+
+```{r, echo = F, warning=F, message=F, error=F} 
+KUB <- enframe(c(85.882, 85.315, 85.152), value = 'KUB')
+HEI <- enframe(c(85.358, 85.518, 85.504), value = 'HEI')
+quali_season <- enframe(c(2007, 2008, 2009), value = 'quali_season')
+quali_gap_KUB_HEI <- bind_cols(
+    quali_season,
+    KUB,
+    HEI
+)
+
+quali_gap_KUB_HEI %>%
+    ggplot(aes(x = quali_season, y = KUB-HEI)) +
+    #geom_line(col = '#020458')
+    geom_bar(stat = "identity", fill = '#020458') +
+    geom_text(aes(label = round((KUB - HEI), 3)), vjust = 1.4)
+```
+
+## Dlaczego Robert Kubica ma szansę być w kwalifikacjach przed George'em Russellem
+
+Ponieważ nie mamy żadnych wiarygodnych danych na temat tego jak "współczesny" Robert, po 8-letniej przerwie może poradzić sobie w kwalifikacja Grand Prix w Australii, a tym bardziej debiutujący George Russell, nie ośmielę się "zgadywać" możliwej różnicy. Jednak w moim odczuciu, mimo przebąkiwań niektórych dziennikarzy po testach w Abu Dhabi w 2017 roku, że co do tempa kwalifikacyjnego Robert Kubica może mieć jeszcze tu obszar do rozwoju, a Robert nie startował w F1 przez 8 sezonów, postawiłbym na Roberta z dwóch powodów.
+
+1. W 3 na 4 starty w kwalifikacjach Robert pokonywał swojego kolegę zespołu i to z coraz większą przewagą. Choć Quick Nick w przeciwieństwie do Roberta Kubicy może nie był materiałem na mistrza świata, to z pewnością bardzo utalentowany kierowca i bardzo dobry punkt odniesienia
+2. Dane pokazują, że nawet tak utalentowany kierowca jak Robert potrzebuje nabrać doświadczenia, żeby w pełni ujawnić swoją prędkość w kwalifikacjach w Melbourne. Choć pokolenie George'a przychodzi do Formuły 1 znacznie lepiej przygotowane niż 13 lat temu, to pamiętajmy, że Kubica startując w 2007 roku pierwszy raz w kwalifikacjach do GP Australii już całkiem zielony nie był. Miał za sobą 6 startów w kwalifikacjach i wyścigach w sezonie 2006, nie mówiąc o licznych sesjach reningowych.  
+
+Jednak mimo, że super sobie podywagować nad tym jak to jutro może być, to jeszcze bardziej super będzie jutro wstać o świcie, żeby zobaczyć jak nie tak rzadkie zdarzenia losowe lub to, że przy tak niestabilnych, pozbawionych docisku, części zamiennych i może nawet uszkodzonych bolidach wyniki czasówki i różnica między kierowcami Williamsa będzie wynikała z czynników całkiem losowych. Już nie mogę się doczekać!
+
+[^1]: Robert Kubica: "Poranek był bardzo trudny, potem się trochę poprawiło, ale czasy okrążeń tego nie pokazują.", źródło: <https://powrotroberta.pl/2019/03/kubica-trzeba-miec-co-testowac-russell-nie-boi-sie-reguly-107.html>
+[^2]: Dla młodszych fanów F1: do 2009 roku bolidy na pit-stopach oprócz zmiany opon były dotankowywane, a rywalizowanie w Q3 z ilością paliwa, z którą startowało się potem w wyścigu sprawiało, że o wyniku Q3 w niemniejszym stopniu niż osiągi bolidu i forma kierowcy decydowała strategia jaką zespół wybrał na wyścig, czyli na którym okrążeniu dany kierowca ma zjechać.
+[^3]: W Q3 różnica czasowa na korzyść Nicka była jeszcze większa, jednak Kubica tankował 7 okrążeń później, co ją tłumaczy w istotnym stopniu, choć nie całkowicie.
