@@ -2,7 +2,7 @@
 bigimg:
  - desc: Fot. Williams Racing
    src: /img/Russell_Kubica.jpg
-date: "2019-03-15"
+date: "15-03-2019"
 subtitle: Jak Robertowi Kubicy szło w przeszłości
 #categories: []
 #slug: zgadywanka-przed-kwalifikacjami-do-gp-australii-jak-robertowi-kubicy-szło-w-przeszłości
