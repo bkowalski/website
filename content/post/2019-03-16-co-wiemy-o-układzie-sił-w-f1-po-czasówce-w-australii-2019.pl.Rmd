@@ -24,10 +24,10 @@ type: ''
 
 Patrząc na wyniki kwalifikacji do GP Australii można wyciągnąć minimum 4 wnioski co do obecnego układu sił w F1, jeśli chodzi o tempo kwalifikacyjne:
 
-1. Środek stawki jest znacznie bliżej siebie niż był rok temu
-2. Największy postęp między początkiem poprzedniego sezonu i począkiem tego sezonu wykonały Alfa Romeo (Sauber) i Toro Rosso
-3. Mercedes dysponuje zdecydowanie najlepszym tempem kwalifikacyjnym na takim torze
-4. Williams przynajmniej na razie spadł do swojej osobnej ligi (jest jedynym zespołem, który nie był szybszy niż w zeszłym roku)  
+1. **Środek stawki jest znacznie bliżej siebie niż był rok temu**
+2. **Największy postęp** między początkiem poprzedniego sezonu i począkiem tego sezonu wykonały **Alfa Romeo (Sauber)** i **Toro Rosso**
+3. **Mercedes dysponuje zdecydowanie najlepszym tempem kwalifikacyjnym na takim torze**
+4. **Williams**, przynajmniej na razie, **spadł do swojej osobnej ligi** (jest jedynym zespołem, który nie był szybszy niż w zeszłym roku)  
 
 Sezon jeszcze długi i wiele może się zmieniać, ale jeśli chodzi o tempo kwalifikacyjne zespółów na rozpoczęcie sezonu, to coś już wiemy, w przeciwieństwie do sytuacji po testach i treningach. Jak słusznie zauważył Christian Horner, szef Red Bull Racing, w przeciwieństwie do testów i treningów na czasówkę każdy uczciwie ściąga spodnie i pokazuje co ma[^1].
 
@@ -153,9 +153,9 @@ Jeśli chodzi o swoje najlepsze czasy, to w tym roku w kwalifikacjach aż połow
 *  Racing Point [na wykresie jeszcze jako Force India]
 *  Renault
 
-Zmieściła się ze swoimi najlepszymi czasami w 0,236 sekundy (sic!).  
+Zmieściła się ze swoimi najlepszymi czasami w **0,236 sekundy** (sic!).  
 
-Wydaje się też, że Red Bull zbliżył się do Ferrari, choć to może być "efekt Maxa", abstrachując już od tego, co zrobił Gasly odpadając w Q1, co było chyba największą niespodzianką negatywną.
+Wydaje się też, że Red Bull zbliżył się do Ferrari, choć to może być "efekt Maxa". Na to, co zrobił Gasly odpadając w Q1, spuśćmy zasłonę milczenia, choć mógł być to też błąd zespołu.
 
 ## Alfa Romeo (Sauber) i Toro Rosso z największą poprawą do poprzednich kwalifikacji GP Australii
 
@@ -201,7 +201,7 @@ Najszybsze okrążenie kwalifikacyjne kierowców Mercedesa było aż o ponad 0,7
 
 ## Williams na razie odpadł z rywalizacji
 
-Nie ma sensu za długo nad tym się pochylać, ale zespół Williamsa boryka się z ogromnymi problemami, co jeśli chodzi o tempo przejawiło się w ten sposób, że jako jedyni nie uzyskali w tegorocznych kwalifikacjach lepszego czasu niż najlepszy czas zeszłorocznych kwalifikacji. Zespół który w ten sposób poprawił się relatywnie najmniej poza williamsem i tak miał ponad 0,5 sekundy szybszy czas w tym roku niż najszybszy w poprzednim.  
+Nie ma sensu za długo nad tym się pochylać, ale zespół Williamsa boryka się z ogromnymi problemami, co jeśli chodzi o tempo przejawiło się w ten sposób, że jako jedyni nie uzyskali w tegorocznych kwalifikacjach lepszego czasu niż najlepszy czas zeszłorocznych kwalifikacji. Zespół który w ten sposób poprawił się relatywnie najmniej poza williamsem i tak miał ponad 0,5 sekundy szybszy czas w tym roku.  
 
 Pozostaje trzymać kciuki, że teraz zadzieją się już faktyczne pozytywne zmiany strukturalne i personalne. Trudno ocenić czy realne jest, żeby przyniosły skutki jeszce w tym sezonie, ale kciuki można trzymać.
 
