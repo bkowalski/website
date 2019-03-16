@@ -15,7 +15,7 @@ googleAnalytics = "UA-117089858-2"
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-  subtitle = "Formuła 1: najświeższe analizy i wnioski oparte na analizie danych w języku R"
+  subtitle = "Formuła 1: najświeższe analizy i wnioski oparte na analizie danych"
   logo = "img/f1wliczbach_icon.png" # Expecting square dimensions
   favicon = "img/favicon.ico"
   dateFormat = "2-01-2006" #"January 2, 2006"
