@@ -1,0 +1,205 @@
+---
+title: Co wiemy o układzie sił w F1 po czasówce w Australii 2019
+author: f1wliczbach
+date: '2019-03-16'
+slug: co-wiemy-o-układzie-sił-w-f1-po-czasówce-w-australii-2019
+categories: []
+tags:
+  - F1
+  - AusGP
+  - analiza
+  - Sauber
+  - Scuderia Toro Rosso
+  - Mercedes-AMG F1
+  - Red Bull Racing
+  - Formuła 1
+  - kwalifikacje
+type: ''
+subtitle: ''
+image: ''
+---
+
+Oczywiście GP Australii jest specyficzne i tak jak po testach i po treningach mówi się, że nie wiadomo nic o układzie sił. Należałoby czekać na zakończenie przedeuropejskiej części sezonu, żeby wyciągnąć pierwsze wnioski, które i tak nie wiele by znaczyły, ponieważ zespoły do Barcelony przywiozą potem tak duże poprawki, że wszystko może się zmienić. I tak naprawdę coś pewnego będziemy wiedzieli po zakończeniu sezonu.  
+
+Jednak moim zdaniem, jeśli chodzi o tempo kwalifikacyjne zespółów na rozpoczęcie sezonu jest kilka faktów, o których już wiemy, bo jak słusznie zauważył Christian Horner, szef Red Bull Racing, w przeciwieństwie do testów i treningów na czasówkę każdy uczciwie ściąga spodnie i pokazuje co ma [^1].
+
+Są przynajmniej 4 pewne wnioski:
+1. Środek stawki jest znacznie bliżej siebie niż był rok temu
+2. Największy postęp między początkiem poprzedniego sezonu i począkiem tego sezonu wykonały Sauber i Toro Rosso
+3. Mercedes dysponuje zdecydowanie najlepszym tempem kwalifikacyjnym na takim torze (ponad 0.7 sekundy między najlepszym czasem Mercedesa i drugiego Ferrari)
+4. Williams przynajmniej na razie spadł do swojej osobnej ligi (jest jedynym zespołem, który nie był szybszy niż w zeszłym roku)  
+
+## Środek stawki jest znacznie bliżej siebie niż był rok temu
+
+Jeśli chodzi o środek stawki to, jest on strasznie, strasznie blisko siebie. Porównując najszybsze czasy uzyskiwane przez zespoły w dowolnej części kwalifikacji przez dowolnego z kierowców zespołu widać to bardzo wyraźnie.  
+
+```{r, echo = F, warning=F, message=F, error=F} 
+
+library(ergastR)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(readr)
+library(ggplot2)
+
+quali.aus.18.raw.df <- qualiResults.df(2018, 1)
+#quali.aus.19.df <- qualiResults.df(2019, 1)
+quali.aus.18.1.df <- quali.aus.18.raw.df %>%
+    select(driverId, constructorId, Q1_time:Q3_time) %>%
+    gather(key = 'session', value = "time", -driverId, -constructorId) %>%
+    mutate(session = str_sub(session, 1, 2))
+
+quali.aus.18.2.df <- quali.aus.18.raw.df %>%
+    select(driverId, constructorId, Q1:Q3) %>%
+    gather(key = 'session', value = 'label', -driverId, -constructorId)
+
+quali.aus.18.3.df <- quali.aus.18.raw.df %>%
+    select(driverId, constructorId, Q1_rank:Q3_rank) %>%
+    gather(key = 'session', value = 'rank', -driverId, -constructorId) %>%
+    mutate(session = str_sub(session, 1, 2))
+
+quali.aus.18.df <- quali.aus.18.1.df %>%
+    left_join(quali.aus.18.2.df, by = c('driverId', 'constructorId', 'session')) %>%
+    left_join(quali.aus.18.3.df, by = c('driverId', 'constructorId', 'session'))
+
+rm(quali.aus.18.1.df, quali.aus.18.2.df, quali.aus.18.3.df)
+
+quali.aus.18.best.df <- quali.aus.18.df %>%
+    group_by(constructorId) %>%
+    filter(time == min(time, na.rm = T)) %>%
+    ungroup() %>%
+    arrange(time) %>%
+    mutate(sezon = 2018) %>%
+    rename(
+        'zespół' = constructorId,
+        'czas' = time
+    ) %>%
+    select(zespół, session, czas, label, sezon)
+
+quali.aus.19.df <- read_csv2('20190316_AusGP_Quali.csv')
+
+quali.aus.19.best.df <- quali.aus.19.df %>%
+    group_by(zespół) %>%
+    filter(czas == min(czas, na.rm = T)) %>%
+    ungroup() %>%
+    arrange(czas) %>%
+    mutate(sezon = 2019) %>%
+    select(zespół, session, czas, label, sezon)
+
+data.to.chart.1.df <- bind_rows(quali.aus.18.best.df, quali.aus.19.best.df) %>%
+    mutate(sezon = as.factor(sezon))
+
+colors.teams <- scale_color_manual(values = c(
+    'ferrari' = '#fc1b00',
+    'force_india' = '#F596C8',
+    'haas' = '#000000',
+    'mclaren' = '#FF8700',
+    'mercedes' = '#10a396',
+    'red_bull' = '#00234b',
+    'renault' = '#f7af00',
+    'sauber' = '#9B0000',
+    'toro_rosso' = '#001d88',
+    'williams' = '#00305a'))
+
+fill.teams <- scale_fill_manual(values = c(
+    'ferrari' = '#fc1b00',
+    'force_india' = '#F596C8',
+    'haas' = '#000000',
+    'mclaren' = '#FF8700',
+    'mercedes' = '#10a396',
+    'red_bull' = '#00234b',
+    'renault' = '#f7af00',
+    'sauber' = '#9B0000',
+    'toro_rosso' = '#001d88',
+    'williams' = '#00305a'))
+
+
+data.to.chart.1.df %>% ggplot(aes(x = sezon, y = czas, group = zespół)) +
+    geom_line(aes(col = zespół), size = 2) +
+    geom_point(aes(col = zespół), size = 4) +
+    geom_text(data = data.to.chart.1.df %>% filter(sezon == '2019',
+                                                 #zespół != 'sauber',
+                                                 zespół != 'mclaren',
+                                                 #zespół != 'toro_rosso',
+                                                 zespół != 'force_india',
+                                                 zespół != 'renault'
+                                                 ),
+              aes(label = zespół , 
+              hjust = -.2, 
+              fontface = "bold", 
+              col = zespół
+              ), size = 4) +
+    labs(
+        title = "Najlepszy czas zespołu w kwalifikacjach do GP Australii [sek]",
+        subtitle = "f1wliczbach.pl",
+        caption = "https://f1wliczbach.pl/post/co-wiemy-o-układzie-sił-w-f1-po-czasówce-w-australii-2019/"
+    ) +
+    scale_x_discrete(position = "top") +
+    theme(axis.title.y = element_blank()) +
+    #theme(text = element_text(size=20)) +
+    colors.teams
+
+```
+
+Wyłączając Williamsa, w tym roku różnica między najszybszym, a najwoniejszym zespołem w kwalifikacjach, to zaledwie 2,054 s. W zeszłym roku (niezależenie od tego, czy uwzględnimy Williamsa, czy nie), różnica wynosiła 3,392.  
+
+Jeśli chodzi o swoje najlepsze czasy, to w tym roku w kwalifikacjach aż połowa zespołów:
+* McLaren
+* Alfa Romeo [na wykresie jeszcze jako Sauber]
+* Toro Rosso
+* Racing Point [na wykresie jeszcze jako Force India]
+* Renault
+
+Zmieściła się ze swoimi najlepszymi czasami w 0,236 sekundy (sic!).  
+
+Wydaje się też, że Red Bull zbliżył się do Ferrari, choć to może być "efekt Maxa", abstrachując już od tego, co zrobił Gasly odpadając w Q1, co było chyba największą niespodzianką negatywną.
+
+## Sauber i Toro Rosso z największą poprawą do poprzednich kwalifikacji GP Australii
+
+Zawężenie środka stawki odbyło się dzięki temu, że poza Williamsem wszystkie zespoły, które były najbardziej były z tyłu na starcie sezonu 2018, jednocześnie w ciągu roku najbardziej poprawiły się.
+
+```{r, echo = F, warning=F, message=F, error=F}
+
+data.to.chart.2.df <- data.to.chart.1.df %>%
+    group_by(zespół) %>%
+    mutate(`Poprawa rok-do-roku` = max(czas) - min(czas),
+           `Poprawa rok-do-roku` = ifelse(zespół =='williams', -`Poprawa rok-do-roku`, `Poprawa rok-do-roku`)) %>%
+    ungroup() %>%
+    filter(sezon == 2019) %>%
+    arrange(`Poprawa rok-do-roku`)
+
+data.to.chart.2.df %>%
+    ggplot(aes(x = reorder(zespół, -`Poprawa rok-do-roku`), y = `Poprawa rok-do-roku`)) +
+    geom_bar(stat = 'identity', aes(fill = zespół)) +
+    geom_text(aes(label = round(`Poprawa rok-do-roku`, 3) , 
+        vjust = -0.3, 
+        fontface = "bold", 
+        col = zespół
+    ), size = 4) +
+    theme(axis.title.y = element_blank()) +
+    theme(axis.title.x = element_blank()) +
+    theme(legend.position = "none") +
+    fill.teams +
+    colors.teams +
+    labs(
+        title = "Poprawa najlepszego czasu zespołu w kwalifikachach GP Australii 2019 vs 2018 [sek]",
+        subtitle = "f1wliczbach.pl",
+        caption = "https://f1wliczbach.pl/post/co-wiemy-o-układzie-sił-w-f1-po-czasówce-w-australii-2019/"
+    )
+
+```
+
+Również Haas mimo niesamowitej formy bolidu (w przeciwieństwie do formy mechaników odpowiedzialnych za zmianę opon) w GP Australii 2018 poprawił się jeszcze bardziej, co sprawia, że odskoczył w kwalifikacjach 2019 odrobinę reszcie stawki i znalazł między pierwszymi trzema zespołami a piątką zespołów zbitych w nieco ponad 2/10 sekundy.
+
+## Mercedes dysponuje zdecydowanie najlepszym tempem kwalifikacyjnym na takim torze
+
+Mercedes, mimo że po testach w Barcelonie większość komentatorów faworyzowała Ferrari bardzo wyraźnie uciekł w kwalifikacjach Ferrari i Red Bulla, które wydają się być blisko siebie (lub przynajmniej Max jest blisko Ferrari).
+Najszybsze okrążenie kwalifikacyjne kierowców Mercedesa było aż o ponad 0,7 sekundy szybsze od najszybszego kółka Ferrari. Nie wiemy jak z tempem wyścigowym, ale w kwalifikacjach różnica na plus dla Mercedesa jest duża.
+
+## Williams na razie odpadł z rywalizacji
+
+Nie ma sensu za długo nad tym się pochylać, ale zespół Williamsa boryka się z ogromnymi problemami, co jeśli chodzi o tempo przejawiło się w ten sposób, że jako jedyni nie uzyskali w tegorocznych kwalifikacjach lepszego czasu niż najlepszy czas zeszłorocznych kwalifikacji. Zespół który w ten sposób poprawił się relatywnie najmniej poza williamsem i tak miał ponad 0,5 sekundy szybszy czas w tym roku niż najszybszy w poprzednim.  
+
+Pozostaje trzymać kciuki, że teraz zadzieją się już faktyczne pozytywne zmiany strukturalne i personalne. Trudno ocenić czy realne jest, żeby przyniosły skutki jeszce w tym sezonie, ale kciuki można trzymać.
+
+[^1]: "But it’s only really when everybody pulls their pants down tomorrow in qualifying that you see where we’re at.", źródło: <https://www.formula1.com/en/latest/article.fia-friday-press-conference-australia-2019.2Ve6Gsjh1BDJjP2lsGtl6g.html>
