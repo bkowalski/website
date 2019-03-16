@@ -1,22 +1,22 @@
 ---
-title: Co wiemy o układzie sił w F1 po czasówce w Australii 2019
-author: f1wliczbach
+title: "Co wiemy o układzie sił w F1 po czasówce w Australii 2019"
+author: "f1wliczbach"
 date: '2019-03-16'
-slug: co-wiemy-o-układzie-sił-w-f1-po-czasówce-w-australii-2019
-categories: []
-tags:
-  - F1
-  - AusGP
-  - analiza
-  - Sauber
-  - Scuderia Toro Rosso
-  - Mercedes-AMG F1
-  - Red Bull Racing
-  - Formuła 1
-  - kwalifikacje
-type: ''
-subtitle: ''
 image: ''
+slug: co-wiemy-o-układzie-sił-w-f1-po-czasówce-w-australii-2019
+subtitle: ''
+tags:
+- F1
+- AusGP
+- analiza
+- Sauber
+- Scuderia Toro Rosso
+- Mercedes-AMG F1
+- Red Bull Racing
+- Formuła 1
+- kwalifikacje
+categories: []
+type: ''
 ---
 
 Oczywiście GP Australii jest specyficzne i tak jak po testach i po treningach mówi się, że nie wiadomo nic o układzie sił. Należałoby czekać na zakończenie przedeuropejskiej części sezonu, żeby wyciągnąć pierwsze wnioski, które i tak nie wiele by znaczyły, ponieważ zespoły do Barcelony przywiozą potem tak duże poprawki, że wszystko może się zmienić. I tak naprawdę coś pewnego będziemy wiedzieli po zakończeniu sezonu.  
